@@ -14,7 +14,7 @@ $errors = array();
 $_SESSION['success']="";
 
 // connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'fypdb');
+$db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349', 'heroku_21795df27a7e941');
 
 // LOGIN ADMIN
 if (isset($_POST['ad_log'])) 

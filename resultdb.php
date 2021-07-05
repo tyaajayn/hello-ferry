@@ -14,7 +14,7 @@
       $noOfChild = "";
       $noOfAdult = "";
 
-      $db = mysqli_connect('localhost', 'root', '', 'fypdb');
+      $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349', 'heroku_21795df27a7e941');
       // Check connection
       if ($db->connect_error) 
       {
