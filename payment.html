@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v5.2.0, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/image-processing20200410-18222-tl5tm1-128x53.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Payment</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/animatecss/animate.css">
+  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.css">
+  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.theme.css">
+  <link rel="stylesheet" href="assets/datepicker/jquery.datetimepicker.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  <script>
+function success() 
+{
+  alert("Success booking! Wait for email on your booking. Close this message to be redirected to our homepage");
+}
+</script>
+</head>
+
+<body>
+	<section class="menu menu3 cid-sn21qrccRj" once="menu" id="menu3-1e">
+    
+    <nav class="navbar navbar-dropdown navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white text-primary display-7" href="home.html">HelloFerry</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="contact.html">Contacts</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="profile.html">My Account</a></li></ul>
+            </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section class="form5 cid-sn1Q6oEwoi" id="form5-17">
+	<section class="form5 cid-sn1Q6oEwoi" id="form5-17">
+    
+    
+    <div class="container">
+        <div class="mbr-section-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                <strong>Payment</strong></h3>
+            
+        </div>
+<center>
+<form name="frmReg" action="home.html" method="post">
+<table cellpadding="5" cellspacing="5">
+        <tbody>
+            <tr id="t1_t2_c_p_rowSavedCC">
+                <td valign="top">
+                    <input id="t1_t2_c_p_rdoSavedCreditCard" type="radio" name="t1:t2:c:p:PaymentMethod" value="rdoSavedCreditCard" checked="checked">
+                </td>
+                <td>
+                    <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td align="right"><span id="t1_t2_c_p_lblSavedCreditCard">Pay by Saved Card:</span>&nbsp;&nbsp;</td>
+                                <td>
+                                    <select name="t1:t2:c:p:ddlSavedCCList" id="t1_t2_c_p_ddlSavedCCList" onchange="$p.rdoSavedCreditCard.checked = true;">
+                                        <option selected="selected" value="o-s1J0eNVIcq4H1oad1hwvro3BLo-s0vwMUr7g-pPe7tsToQhzbVQ5W4A-e-e">P-Card 4375</option>
+                                    </select>&nbsp;&nbsp;</td>
+                                <td><a id="t1_t2_c_p_btnDeleteSavedCC" class="LinkButton" href="javascript:__doPostBack('t1$t2$c$p$btnDeleteSavedCC','')" style="display: none;">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr id="t1_t2_c_p_rowCreditCard">
+                <td valign="top">
+                    <input id="t1_t2_c_p_rdoCreditCard" type="radio" name="t1:t2:c:p:PaymentMethod" value="rdoCreditCard">
+                </td>
+                <td>
+                    <table cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr>
+                                <td><span id="t1_t2_c_p_lblCreditCard">Pay by Credit Card:</span>&nbsp;&nbsp;</td>
+                                <td>
+                                    <select name="t1:t2:c:p:ddlCCType" id="t1_t2_c_p_ddlCCType" onchange="$p.rdoCreditCard.checked = true;" style="width:100%;">
+                                        <option selected="selected" value="Visa">Visa</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Account Number:&nbsp;&nbsp;</td>
+                                <td>
+                                    <input name="t1:t2:c:p:txbCCAccount" type="text" maxlength="20" id="t1_t2_c_p_txbCCAccount" autocomplete="off" onkeypress="$p.rdoCreditCard.checked = true;" style="width:150px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Expiration Date:&nbsp;&nbsp;</td>
+                                <td>
+                                    <select name="t1:t2:c:p:ddlCCExpMonth" id="t1_t2_c_p_ddlCCExpMonth">
+                                        <option selected="selected" value=""></option>
+                                        <option value="1">01</option>
+                                        <option value="2">02</option>
+                                        <option value="3">03</option>
+                                        <option value="4">04</option>
+                                        <option value="5">05</option>
+                                        <option value="6">06</option>
+                                        <option value="7">07</option>
+                                        <option value="8">08</option>
+                                        <option value="9">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                    <select name="t1:t2:c:p:ddlCCExpYear" id="t1_t2_c_p_ddlCCExpYear">
+                                        <option value=""></option>
+                                        <option value="2014">2014</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="t1_t2_c_p_rowSaveCCQuestion">
+                                <td></td>
+                                <td>
+                                    <input id="t1_t2_c_p_chkSaveCC" type="checkbox" name="t1:t2:c:p:chkSaveCC">&nbsp;&nbsp;Save my credit card information</td>
+                            </tr>
+                            <tr>
+                            	<td colspan="2" rowspan="1">
+									<button onclick="success()" value="Proceed" type="submit" class="btn btn-success display-4">Submit
+									</button>
+								</td>
+							</tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+</center>
+</section>
+</body>
+</html>
