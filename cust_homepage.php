@@ -72,9 +72,11 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custProfile.php">Profile</a></li>
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="search.php">Book</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php?logout='1'">Logout</a></li></ul>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="help.html">Help</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custProfile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php?logout='1'">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -110,7 +112,7 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
                 </tr></thead>";
 
         // receive all input values from the form
-        $sql = "SELECT * From Booking WHERE custUsn ='$username'";        
+        $sql = "SELECT booking.*, transport.* From Booking INNER JOIN transport ON booking.tranID = transport.tranID WHERE custUsn ='$username'";        
         $result = $db->query($sql);
         if ($result -> num_rows > 0)
         {
@@ -120,12 +122,14 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
                 echo "<td>"; echo $row["bookID"]; echo "</td>";
                 echo "<td>"; echo $row["tranType"]; echo "</td>";
                 echo "<td>"; echo $row["tranCabin"]; echo "</td>";
-                echo "<td>"; echo $row["noOfAdult"]; echo "</td>";
-                echo "<td>"; echo $row["noOfChild"]; echo "</td>";
+                echo "<td>"; echo $row["adultNo"]; echo "</td>";
+                echo "<td>"; echo $row["childNo"]; echo "</td>";
                 echo "<td>"; echo $row["tranFrom"]; echo "</td>";
                 echo "<td>"; echo $row["tranTo"]; echo "</td>";
                 echo "<td>"; echo $row["tranDate"]; echo "</td>";
                 echo "<td>"; echo $row["tranTime"]; echo "</td>";
+                echo "<td>"; ?> <a href="book_edit.php?edit=<?php echo $row['bookID']; ?>"class="btn btn-success-outline" >Edit</a><?php echo "</td>"; 
+                echo "<td>"; ?>  <a href="cust_hp_db.php?del=<?php echo $row['bookID']; ?>" class="btn btn-danger-outline">Delete</a><?php echo "</td>"; 
                 echo "</tr>";
               }
 
@@ -138,7 +142,6 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
         {
             echo "You have no booking yet!";
         }
-
     ?>
     </center>
 </section>

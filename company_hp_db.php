@@ -59,7 +59,6 @@ if (isset($_POST['adReg'])) {
     $query = "INSERT INTO Admin (adName, adUsername, adEmail, adPass, adTelNo, adWorkPlace, adComp) 
           VALUES('$adName', '$adUsername', '$adEmail', '$adPass', '$adTelNo', '$adWorkPlace', '$adComp')";
     mysqli_query($db, $query);
-    $_SESSION['adUsername'] = $adUsername;
 
     header('location: company_homepage.php');
   }
@@ -79,6 +78,7 @@ if (isset($_POST['adReg'])) {
         $adWorkPlace = mysqli_real_escape_string($db, $_POST['adWorkPlace']);
         $adComp = mysqli_real_escape_string($db, $_POST['adComp']);
 
+      $adPass = md5($_POST ['adPass']);
       mysqli_query($db, "UPDATE Admin SET adName='$adName', adUsername='$adUsername', adEmail='$adEmail', adPass='$adPass', adTelNo='$adTelNo', adWorkPlace='$adWorkPlace', adComp='$adComp' WHERE adID='$adID'");
       $_SESSION['message'] = "Admin updated!"; 
       header('location: company_homepage.php');

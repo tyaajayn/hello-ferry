@@ -75,6 +75,9 @@
 <br><br><br>
 <p>Not a user? Register now!</p>
 <p><a href="coReg.php">Company</a> || <a href="custReg.php">Customer</a></p>
+<br>
+<p>Have an account? Log in now!</p>
+<p><a href="adLog.php">Admin</a> || <a href="custLog.php">Customer</a></p>
 </form>
 </center>
 </section>

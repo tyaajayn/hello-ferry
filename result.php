@@ -51,7 +51,8 @@
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="cust_homepage.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custProfile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php">Logout</a></li></ul>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -66,7 +67,7 @@
                 <strong>Result</strong></h3>
      </div>
 <center>
-<form name="continue" method="post" action="result.php">
+<form class="container-fluid" name="continue" method="post" action="result.php">
 <table class="table table-bordered" style="text-align:center">
 <thead><tr><th>#</th>
        <th>Transport Name</th>
@@ -83,65 +84,37 @@
 
 <br><br>
 
-<form name="continue" method="post" action="result.php">
+<form name="frmcont" action="resultdb.php" method="post">
 <table cellpadding="5" cellspacing="5">
-<tbody>
-<tr><td>
-</td></tr>
-<tr></tr>
+<tbody><tr><td>
+</td></tr><input type="hidden" name="username" class="form-control" value="<?php echo $bookID?>">
 <tr>
-<td> Username : </td>
-<td><input name="custUsn" class="form-control" value="<?php echo $custUsn?>">
+<td> Username: </td>
+<td><input name="custUsn" class="form-control" value="<?php echo $custUsn?>"> 
 </td>
 </tr>
 <tr>
 <td> Adult : </td>
-<td><input name="noOfAdult" type="number" min="0" class="form-control" value="<?php echo $noOfAdult?>">
+<td><input name="adultNo" class="form-control" type="number" min="0" value="<?php echo $adultNo?>"> 
 </td>
 </tr>
 <tr>
 <td> Child : </td>
-<td><input name="noOfChild" type="number" min="0" class="form-control" value="<?php echo $noOfChild?>">
+<td><input name="childNo" class="form-control" type="number" min="0" value="<?php echo $childNo?>"> 
 </td>
 </tr>
 <tr>
-    <td> Transport ID : </td>
-    <td>
-        <input name="noOfChild" placeholder="ID #  of your choosing here" class="form-control" value="<?php echo $tranID?>">
-        <input name="noOfChild" placeholder="ID #  of your choosing here" class="form-control" value="<?php echo $tranID?>">
-    </td>
+<td> Transport ID : </td>
+<td><input name="tranID" class="form-control" value="<?php echo $tranID?>"> 
+</td>
 </tr>
 <tr>
 <td colspan="2" rowspan="1">
 <center>
-<input name="continue" value="Continue" type="submit" class="btn btn-success"></center>
+<input name="book" value="Book" type="submit" class="btn btn-success"></center>
 </td></tr></tbody></table>
 </form>
-<?php
-if (isset($_POST['continue'])) 
-      {
-        // receive all input values from the form
-
-
-          $sql = "SELECT transport.*, terminal.terName FROM transport, terminal WHERE tranFrom = terID AND tranID='$tranID'";
-
-          $result = $db->query($sql);
-          while ($row = $result->fetch_assoc())
-          {
-            echo "<tr>";
-            echo "<td>"; echo $row["tranID"]; echo "</td>";
-            echo "<td>"; echo $row["tranName"]; echo "</td>";
-            echo "<td>"; echo $row["tranType"]; echo "</td>";
-            echo "<td>"; echo $row["tranCabin"]; echo "</td>";
-            echo "<td>"; echo $row["tranDate"]; echo "</td>";
-            echo "<td>"; echo $row["tranTime"]; echo "</td>"; 
-            echo"</tr>";
-
-          } 
-      }
-?>
-</center>    
-</form>
+</center>
 </section>
 <section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/z" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a></section><script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/popper/popper.min.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>  <script src="assets/formstyler/jquery.formstyler.js"></script>  <script src="assets/formstyler/jquery.formstyler.min.js"></script>  <script src="assets/datepicker/jquery.datetimepicker.full.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/formoid/formoid.min.js"></script>  
   

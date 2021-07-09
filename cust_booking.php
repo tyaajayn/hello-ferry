@@ -1,28 +1,4 @@
 <?php
- 
-// Starting the session, to use and
-// store data in session variable
-  
-// If the session variable is empty, this
-// means the user is yet to login
-// User will be sent to 'adLog.php' page
-// to allow the user to adLog
-if (!isset($_SESSION['adUsername'])) {
-    $_SESSION['msg'] = "You have to log in first";
-    header('location: adLog.php');
-}
-  
-// Logout button will destroy the session, and
-// will unset the session variables
-// User will be headed to 'adLog.php'
-// after loggin out
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['adUsername']);
-    header("location: adLog.php");
-}
-?>
-<?php
 // initializing variables
 $bookID = "";
 $bookType = "";

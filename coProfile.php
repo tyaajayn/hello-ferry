@@ -2,17 +2,17 @@
 session_start();
 
 // initializing variables
-$adName = "";
-$adUsername = "";
-$adEmail = "";
+$coName = "";
+$coUsername = "";
+$coEmail = "";
+$coPass = "";
 $newPass = "";
 $confPass = "";
-$adTelNo = "";
-$adWorkPlace = "";
-$adComp = "";
+$coTelNo = "";
+$coHq = "";
 $errors = array(); 
 $_SESSION['success']="";
-$adUsername = $_SESSION ['adUsername'];
+$coUsername = $_SESSION ['coUsername'];
 
 // connect to the database
 $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349', 'heroku_21795df27a7e941');
@@ -80,8 +80,8 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="admin_homepage.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="adLog.php?logout='1'">Logout</a></li></ul>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="company_homepage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="coLog.php">Logout</a></li></ul>
             </div>
         </div>
     </nav>
@@ -91,7 +91,7 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
     <div class="container">
         <div class="mbr-section-head">
             <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-            <strong>Admin Homepage</strong></h3>
+            <strong>Company Homepage</strong></h3>
         </div>
     </div>
     <br><br>
@@ -111,73 +111,47 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
         echo"<table cellpadding='5' cellspacing='5' style='align:center;'>";
 
         // receive all input values from the form
-        $sql = "SELECT * From Admin, Company, Terminal WHERE adUsername='$adUsername' AND coID = adComp AND adWorkPlace = terID ORDER BY adID ASC ";        
+        $sql = "SELECT * From Company WHERE coUsername='$coUsername'";        
 
         $result = $db->query($sql);
         while ($row = $result->fetch_assoc())
           {
             echo "<tr>"; 
-            echo "<td><th>Name : </th></td>"; echo "<td>"; echo $row["adName"]; echo "</td>"; 
+            echo "<td><th>Name : </th></td>"; echo "<td>"; echo $row["coName"]; echo "</td>"; 
             echo "</tr>";
             echo "<tr>"; 
-            echo "<td><th>Username : </th></td>"; echo "<td>"; echo $row["adUsername"]; echo "</td>"; 
+            echo "<td><th>Username : </th></td>"; echo "<td>"; echo $row["coUsername"]; echo "</td>"; 
             echo "</tr>";
             echo "<tr>"; 
-            echo "<td><th>Email : </th></td>"; echo "<td>"; echo $row["adEmail"]; echo "</td>"; 
+            echo "<td><th>Email : </th></td>"; echo "<td>"; echo $row["coEmail"]; echo "</td>"; 
             echo "</tr>";
             echo "<tr>"; 
-            echo "<td><th>Phone Number : </th></td>"; echo "<td>0"; echo $row["adTelNo"]; echo "</td>"; 
+            echo "<td><th>Phone Number : </th></td>"; echo "<td>0"; echo $row["coTelNo"]; echo "</td>"; 
             echo "</tr>";
             echo "<tr>"; 
-            echo "<td><th>Company : </th></td>"; echo "<td>"; echo $row["coName"]; echo "</td>"; 
-            echo "</tr>";
-            echo "<tr>"; 
-            echo "<td><th>Workplace : </th></td>"; echo "<td>"; echo $row["terName"]; echo "</td>"; 
+            echo "<td><th>Headquarters : </th></td>"; echo "<td>"; echo $row["coHq"]; echo "</td>"; 
              echo "</tr></center></table><br><br>";
           }
 
     ?>
     <button type="button" class="btn btn-success" onclick="openForm()">Edit</button>
 
-    <form class="form-popup" id="edit" name="edit" method="post" action="adProfile.php">
+    <form class="form-popup" id="edit" name="edit" method="post" action="coProfile.php">
     <br><br>
-    <label for="adName"><b>Name</b></label>
-    <input name="adName" class="form-control" value="<?php echo $adName?>"><br>
+    <label for="coName"><b>Company Name</b></label>
+    <input name="coName" class="form-control" value="<?php echo $coName?>"><br>
 
-    <label for="adUsername"><b>Username</b></label>
-    <input name="adUsername" class="form-control" value="<?php echo $adUsername?>"><br>
+    <label for="coUsername"><b>Company Username</b></label>
+    <input name="coUsername" class="form-control" value="<?php echo $coUsername?>"><br>
 
-    <label for="adEmail"><b>Email</b></label>
-    <input name="adEmail" class="form-control" value="<?php echo $adEmail?>"><br>
+    <label for="coEmail"><b>Company Email</b></label>
+    <input name="coEmail" class="form-control" value="<?php echo $coEmail?>"><br>
 
-    <label for="adTelNo"><b>Phone Number</b></label>
-    <input name="adTelNo" class="form-control" value="<?php echo $adTelNo?>"><br>
+    <label for="coTelNo"><b>Company Telephone Number</b></label>
+    <input name="coTelNo" class="form-control" value="<?php echo $coTelNo?>"><br>
 
-    <label for="adWorkPlace"><b>Work Place</b></label><br>
-       <select name="adWorkPlace">
-      <option disabled selected> Select Location</option>
-       <?php
-            $records = mysqli_query($db, "SELECT terID, terName FROM Terminal ORDER BY (terID) ASC");  // Use select query here 
-
-            while($data = mysqli_fetch_array($records))
-            {
-                echo "<option value='". $data['terID'] ." - ". $data['terName'] ."'>" .$data['terID'] ." - ". $data['terName'] ."</option>";  // displaying data in option menu
-            } 
-        ?>  
-    </select><br>
-
-    <label for="adComp"><b>Company</b></label><br>
-   <select name="adComp">
-      <option disabled selected> Select Company</option>
-       <?php
-            $records = mysqli_query($db, "SELECT coID, coName FROM Company ORDER BY (coID) ASC");  // Use select query here 
-
-            while($data = mysqli_fetch_array($records))
-            {
-                echo "<option value='". $data['coID'] ." - ". $data['coName'] ."'>" .$data['coID'] ." - ". $data['coName'] ."</option>";  // displaying data in option menu
-            } 
-        ?>  
-    </select><br>
+    <label for="coHq"><b>Headquarters</b></label>
+    <input name="coHq" class="form-control" value="<?php echo $coHq?>"><br>
 
     <label for="newPass"><b>New Password</b></label>
     <input type="password" name="newPass" class="form-control" value="<?php echo $newPass?>"><br>
@@ -203,12 +177,11 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
 if (isset($_POST['update'])) 
 {
   // receive all input values from the form
-  $adName = mysqli_real_escape_string($db, $_POST['adName']);
-  $adUsername = mysqli_real_escape_string($db, $_POST['adUsername']);
-  $adEmail = mysqli_real_escape_string($db, $_POST['adEmail']);
-  $adTelNo = mysqli_real_escape_string($db, $_POST['adTelNo']);
-  $adComp = mysqli_real_escape_string($db, $_POST['adComp']);
-  $adWorkPlace = mysqli_real_escape_string($db, $_POST['adWorkPlace']);
+  $coName = mysqli_real_escape_string($db, $_POST['coName']);
+  $coUsername = mysqli_real_escape_string($db, $_POST['coUsername']);
+  $coEmail = mysqli_real_escape_string($db, $_POST['coEmail']);
+  $coTelNo = mysqli_real_escape_string($db, $_POST['coTelNo']);
+  $coHq = mysqli_real_escape_string($db, $_POST['coHq']);
   $newPass = mysqli_real_escape_string($db, $_POST['newPass']);
   $confPass = mysqli_real_escape_string($db, $_POST['confPass']);
 
@@ -216,9 +189,9 @@ if (isset($_POST['update']))
   // by adding (array_push()) corresponding error unto $errors array
     
     $newPass = md5($_POST ['newPass']);
-    $query = "UPDATE admin SET adName='$adName', adUsername='$adUsername', adEmail='$adEmail', adPass='$newPass', adTelNo='$adTelNo', adWorkPlace='$adWorkPlace', adComp='$adComp' WHERE adUsername='$adUsername'";
+    $query = "UPDATE Company SET coName='$coName', coUsername='$coUsername', coEmail='$coEmail', coPass='$newPass', coTelNo='$coTelNo', coHq='$coHq' WHERE coUsername='$coUsername'";
     mysqli_query($db, $query);
-    $_SESSION['adUsername'] = $adUsername;
+    $_SESSION['coUsername'] = $coUsername;
     $_SESSION['message'] = "Data inserted!"; 
 }
 ?>

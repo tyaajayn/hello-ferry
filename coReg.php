@@ -97,9 +97,12 @@
 </tbody>
 </table><br><br>
 <input name="co_reg" value="Register" type="submit" class="btn btn-success">
-<br><br><br>
+br><br><br>
 <p>Have an account? Log in now!</p>
 <p><a href="coLog.php">Company</a> || <a href="adLog.php">Admin</a> || <a href="custLog.php">Customer</a></p>
+<br>
+<p>Not a user? Register now!</p>
+<p><a href="coReg.php">Company</a> || <a href="custReg.php">Customer</a></p>
 </form>
 </center>
 </div></section>

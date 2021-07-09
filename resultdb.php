@@ -2,8 +2,13 @@
   session_start();
 
       $custUsn = "";
+      $fName = "";
+      $lName = "";
+      $custTelNo = "";
+      $custEmail = "";
       $tranID = "";
       $tranName = "";
+      $tranType = "";
       $tranCabin = "";
       $tranComp = "";
       $tranFrom = "";
@@ -11,8 +16,8 @@
       $tranDate = "";
       $tranTime = "";
       $terName = "";
-      $noOfChild = "";
-      $noOfAdult = "";
+      $adultNo = "";
+      $childNo= "";
 
       $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349', 'heroku_21795df27a7e941');
       // Check connection
@@ -25,8 +30,9 @@
       {
         // receive all input values from the form
         $tranType = mysqli_real_escape_string($db, $_POST['tranType']);
+        $tranDate = mysqli_real_escape_string($db, $_POST['tranDate']);
 
-          $sql = "SELECT transport.*, terminal.terName FROM transport INNER JOIN terminal ON transport.tranFrom = terminal.terID WHERE tranType = '$tranType'";        
+          $sql = "SELECT transport.*, terminal.terName FROM transport INNER JOIN terminal ON transport.tranFrom = terminal.terID WHERE tranDate = '$tranDate' AND tranType = '$tranType'";        
           $result = $db->query($sql);
           while ($row = $result->fetch_assoc())
           {
@@ -43,26 +49,19 @@
           }
       }
 
-      if (isset($_POST['continue'])) 
+      if (isset($_POST['book'])) 
       {
         // receive all input values from the form
+        $tranID = mysqli_real_escape_string($db, $_POST['tranID']);
+        $custUsn = mysqli_real_escape_string($db, $_POST['custUsn']);
+        $adultNo = mysqli_real_escape_string($db, $_POST['adultNo']);
+        $adultNo = mysqli_real_escape_string($db, $_POST['adultNo']);
 
+        $query = "INSERT INTO booking (custUsn, tranID, adultNo, childNo) 
+  			VALUES('$custUsn', '$tranID', '$adultNo', '$childNo')";
+        mysqli_query($db, $query);
 
-          $sql = "SELECT transport.*, terminal.terName FROM transport, terminal WHERE tranFrom = terID AND tranID='$tranID'";
-
-          $result = $db->query($sql);
-          while ($row = $result->fetch_assoc())
-          {
-            echo "<tr>";
-            echo "<td>"; echo $row["tranID"]; echo "</td>";
-            echo "<td>"; echo $row["tranName"]; echo "</td>";
-            echo "<td>"; echo $row["tranType"]; echo "</td>";
-            echo "<td>"; echo $row["tranCabin"]; echo "</td>";
-            echo "<td>"; echo $row["tranDate"]; echo "</td>";
-            echo "<td>"; echo $row["tranTime"]; echo "</td>"; 
-            echo"</tr>";
-
-          } 
-          mysqli_query($db, $sql);
+        header('location: cust_homepage.php');
       }
+
 ?>

@@ -48,7 +48,7 @@
         <div class="container-fluid">
             <div class="navbar-brand">
                 
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white text-primary display-7">HelloFerry</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white text-primary display-7" href="home.html">HelloFerry</a></span>
             </div>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
@@ -60,7 +60,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="coLog.php">Logout</a></li></ul>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="coProfile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="coLog.php?logout='1'">Logout</a></li></ul>
             </div>
         </div>
     </nav>
@@ -78,11 +79,10 @@
 <form name="adReg" method="post" action="company_hp_db.php">
     <?php include ('errors.php');?>
 <br><br><table cellpadding="5" cellspacing="5">
-<tbody><tr><td>
+<tbody><tr><h4>Add Admin</h4></tr>
+<tr><td></td>
+<td><input type="hidden" name="adID" class="form-control" value="<?php echo $adID?>">
 </td></tr>
-    <tr><td></td>
-        <td><input type="hidden" name="adID" class="form-control" value="<?php echo $adID?>">
-    </td></tr>
 <tr>
 <td>
 </td><td> Name : </td>
@@ -119,7 +119,7 @@
 </td><td> Company : </td>
 <td>
 <select name="adComp">
-  <option disabled selected> Select Location</option>
+  <option disabled selected> Select Company</option>
    <?php
         $records = mysqli_query($db, "SELECT coID, coName FROM Company ORDER BY (coID) ASC");  // Use select query here 
 
@@ -144,9 +144,9 @@
 </tbody>
 </table><br>
         <?php if ($update == true): ?>
-        <input name="update" value="Update" type="submit" class="btn btn-success display-4">
+        <input name="update" value="Update" type="submit" class="btn btn-success">
         <?php else: ?>
-        <input name="adReg" value="Insert" type="submit" class="btn btn-success display-4">
+        <input name="adReg" value="Insert" type="submit" class="btn btn-success">
         <?php endif ?>
     </form></center><br><br>
         
@@ -165,7 +165,7 @@
     <center>
     <form name="search" method="post" action="company_homepage.php">
     <table cellpadding="5" cellspacing="5">
-    <tbody><tr><td></td></tr>
+    <tbody><tr><h3>Find Admin</h3></tr>
     <tr></tr>
     <tr><td> Company : </td>
     <td><select name="adComp">
@@ -181,7 +181,7 @@
                 ?>  
         </select></td></tr>
     <tr><td colspan="2" rowspan="1"><center>
-        <input name="find" value="Search" type="submit" class="btn btn-success display-4"></center>
+        <input name="find" value="Search" type="submit" class="btn btn-success"></center>
     </td></tr></tbody></table><br>
 
     <?php  
@@ -217,9 +217,10 @@
             echo "<td>"; echo $row["adName"]; echo "</td>";
             echo "<td>"; echo $row["adUsername"]; echo "</td>";
             echo "<td>"; echo $row["adEmail"]; echo "</td>";
-            echo "<td>"; echo $row["adTelNo"]; echo "</td>";
+            echo "<td>0"; echo $row["adTelNo"]; echo "</td>";
             echo "<td>"; echo $row["terName"]; echo "</td>";
-            echo "<td>"; ?> <a href="company_hp_db.php?del=<?php echo $row['adID']; ?>" class="btn btn-danger-outline">Delete</a><?php echo "</td>"; 
+            echo "<td>"; ?> <a href="company_homepage.php?edit=<?php echo $row['adID']; ?>"class="btn btn-success-outline" >Edit</a><?php echo "</td>"; 
+            echo "<td>"; ?>  <a href="company_hp_db.php?del=<?php echo $row['adID']; ?>" class="btn btn-danger-outline">Delete</a><?php echo "</td>"; 
             echo "</tr>";
           }
 

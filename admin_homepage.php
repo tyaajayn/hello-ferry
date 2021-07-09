@@ -100,7 +100,6 @@ if (isset($_GET['logout'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="adProfile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="cust_booking.php">Manage</a></li>
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="adLog.php?logout='1'">Logout</a></li></ul>
             </div>
         </div>

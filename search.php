@@ -28,14 +28,27 @@
   
 </head>
 <body>
-  
-  <section class="menu menu3 cid-sn21qrccRj" once="menu" id="menu3-1e">
-    
+<section class="menu menu3 cid-sn21qrccRj" once="menu" id="menu3-1e">
     <nav class="navbar navbar-dropdown navbar-expand-lg">
         <div class="container-fluid">
             <div class="navbar-brand">
                 
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-white text-primary display-7" href="home.html">HelloFerry</a></span>
+            </div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="cust_homepage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custProfile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -55,7 +68,7 @@
 </td></tr>
 <tr>
 <td> Date : </td>
-<td><input type="date" name="bookDate"> 
+<td><input type="date" name="tranDate"> 
 </td>
 </tr>
 <tr>

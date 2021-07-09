@@ -1,4 +1,4 @@
-<?php include('admin_hp_db.php'); ?>
+<?php include('cust_hp_db.php'); ?>
 <?php 
     if (isset($_GET['edit'])) 
     {
@@ -59,9 +59,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="adProfile.php">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="cust_booking.php">Manage</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="adLog.php?logout='1'">Logout</a></li></ul>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="cust_homepage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custProfile.php">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php?logout='1'">Logout</a></li></ul>
             </div>
         </div>
     </nav>
@@ -70,7 +70,7 @@
     <div class="container">
         <div class="mbr-section-head">
             <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-            <strong>Admin Homepage</strong></h3>
+            <strong>Homepage</strong></h3>
         </div>
     </div>
     <br><br>
@@ -85,7 +85,7 @@
     </center>
     <?php endif ?>
     <center>
-    <form name="updateBk" method="post" action="admin_hp_db.php">
+    <form name="updateBk" method="post" action="cust_hp_db.php">
     <br><table cellpadding="5" cellspacing="5">
     <tbody><tr><td></td></tr>
 
@@ -97,66 +97,20 @@
         <td><input type="hidden" name="custUsn" class="form-control" value="<?php echo $custUsn?>">
     </td></tr>
 
-    <tr><td></td><td> Transport Type : </td>
-    <td>
-        <select name="tranType" value="<?php echo $tranType?>">
-          <option disabled selected>Select Transport Type</option>
-          <option>Vehicle Ferry</option>
-          <option>Express Ferry</option>
-          <option>Speed Boat</option>
-        </select></td></tr>
-
         <tr><td></td>
         <td><input type="hidden" name="tranID" class="form-control" value="<?php echo $tranID?>">
     </td></tr>
 
-    <tr><td></td><td> Transport Cabin : </td>
-        <td>
-            <input type="radio" name="tranCabin" value="Economy"/> Economy
-            <input type="radio" name="tranCabin" value="First"/> First
-        </td></tr>
-
-        <tr><td></td>
-                <td><input type="hidden" name="noOfAdult" class="form-control" value="<?php echo $noOfAdult?>">
-            </td></tr>
-
-        <tr><td></td>
-                <td><input type="hidden" name="noOfChild" class="form-control" value="<?php echo $noOfChild?>">
-            </td></tr>
-
-    <tr><td></td><td> From : </td>
-    <td><select name="tranFrom">
-          <option disabled selected> Select Location </option>
-           <?php
-                $records = mysqli_query($db, "SELECT terID, terName From Terminal ORDER BY (terID) ASC");  // Use select query here 
-
-                while($data = mysqli_fetch_array($records))
-                {
-                    echo "<option value='". $data['terID'] ." - ". $data['terName'] ."'>" .$data['terID'] ." - ". $data['terName'] ."</option>";   // displaying data in option menu
-                } 
-            ?>  
-    </select></td></tr>
-
-    <tr><td></td><td> To : </td>
-        <td><select name="tranTo">
-          <option disabled selected> Select Location</option>
-           <?php
-                $records = mysqli_query($db, "SELECT terID, terName From Terminal ORDER BY (terID) ASC");  // Use select query here 
-
-                while($data = mysqli_fetch_array($records))
-                {
-                    echo "<option value='". $data['terID'] ." - ". $data['terName'] ."'>" .$data['terID'] ." - ". $data['terName'] ."</option>";   // displaying data in option menu
-                } 
-            ?>  
-        </select></td></tr>
-
-    <tr><td></td><td> Date : </td><td>
-        <input type="date" name="tranDate" class="form-control" value="<?php echo $tranDate?>">
-    </td></tr>
-    
-    <tr><td></td><td> Time (HH:MM:SS): </td><td>
-        <input name="tranTime" class="form-control" value="<?php echo $tranTime?>" placeholder="Enter in 24H format">
-    </td></tr>
+    <tr>
+    <td> Adult : </td>
+    <td><input name="adultNo" class="form-control" type="number" min="0" value="<?php echo $adultNo?>"> 
+    </td>
+    </tr>
+    <tr>
+    <td> Child : </td>
+    <td><input name="childNo" class="form-control" type="number" min="0" value="<?php echo $childNo?>"> 
+    </td>
+    </tr>
 
     </tbody></table>
         <?php if ($update == true): ?>

@@ -97,10 +97,13 @@
 </tr>
 </tbody>
 </table><br><br>
-<input name="cust_reg" value="Register" type="submit" class="btn btn-success display-4">
+<input name="cust_reg" value="Register" type="submit" class="btn btn-success">
 <br><br><br>
 <p>Have an account? Log in now!</p>
 <p><a href="coLog.php">Company</a> || <a href="adLog.php">Admin</a> || <a href="custLog.php">Customer</a></p>
+<br>
+<p>Not a user? Register now!</p>
+<p><a href="coReg.php">Company</a></p>
 </form>
 </center>
 </div></section>

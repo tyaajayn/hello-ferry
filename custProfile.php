@@ -80,9 +80,11 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="cust_homepage.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="search.php">Book</a></li>
-                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php">Logout</a></li></ul>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="help.html">Help</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="cust_homepage.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="custLog.php">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -130,8 +132,8 @@ $db = mysqli_connect('us-cdbr-east-04.cleardb.com', 'bdf41ebfb5bd3b', '7d2da349'
             echo "<td><th>Email : </th></td>"; echo "<td>"; echo $row["custEmail"]; echo "</td>"; 
             echo "</tr>";
             echo "<tr>"; 
-            echo "<td><th>Phone Number : </th></td>"; echo "<td>"; echo $row["custTelNo"]; echo "</td>"; 
-             echo "</tr></center></table><br>";
+            echo "<td><th>Phone Number : </th></td>"; echo "<td>0"; echo $row["custTelNo"]; echo "</td>"; 
+            echo "</tr></center></table><br>";
           }
 
     ?>
@@ -197,7 +199,7 @@ if (isset($_POST['update']))
     $query = "UPDATE Customer SET fName='$fName', lName='$lName',username='$username', custEmail='$custEmail', custPass='$newPass', custTelNo='$custTelNo' WHERE username='$username'";
     mysqli_query($db, $query);
     $_SESSION['username'] = $username;
-    $_SESSION['message'] = "Data inserted!"; 
+    $_SESSION['message'] = "Data inserted!";
 }
 
 ?>
