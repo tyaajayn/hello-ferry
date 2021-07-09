@@ -55,7 +55,7 @@
         $tranID = mysqli_real_escape_string($db, $_POST['tranID']);
         $custUsn = mysqli_real_escape_string($db, $_POST['custUsn']);
         $adultNo = mysqli_real_escape_string($db, $_POST['adultNo']);
-        $adultNo = mysqli_real_escape_string($db, $_POST['adultNo']);
+        $childNo = mysqli_real_escape_string($db, $_POST['childNo']);
 
         $query = "INSERT INTO booking (custUsn, tranID, adultNo, childNo) 
   			VALUES('$custUsn', '$tranID', '$adultNo', '$childNo')";
